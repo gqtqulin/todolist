@@ -51,10 +51,10 @@ export const AddTask = ({tasks, setTasks}: Props) => {
   return (<div>
     <form onSubmit={handleSubmitAddTaskForm}>
         <label>Введите имя задачи:
-            <input type='text' value={title} onChange={handleTitleInputChange}/>
+            <input type='text' placeholder='имя задачи' value={title} onChange={handleTitleInputChange}/>
         </label>
         <label>Введите описание задачи:
-            <input type='text' value={desc} onChange={handleDescInputChange}/>
+            <input type='text' placeholder='описание задачи' value={desc} onChange={handleDescInputChange}/>
         </label>
         <input type='submit'disabled={isButtonDisabled} value='Добавить задачу' />
     </form>

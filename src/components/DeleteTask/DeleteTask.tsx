@@ -32,6 +32,7 @@ export const DeleteTask = ({ tasks, setTasks }: Props) => {
     } else {
         throw new Error('Переданный id должен быть числом!')
     }
+    setInputId('');
   };
 
   const handlerChangeIdInput = (event: React.FormEvent<HTMLInputElement>) => {
@@ -43,7 +44,7 @@ export const DeleteTask = ({ tasks, setTasks }: Props) => {
       <form onSubmit={handleDeleteTaskFormSubmit}>
         <label>
           Для удаление заметки укажите ее id
-          <input type="text" placeholder="id" onChange={handlerChangeIdInput} />
+          <input type="text" placeholder="id" value={inputId} onChange={handlerChangeIdInput} />
         </label>
         <input type="submit" value="delete" />
       </form>

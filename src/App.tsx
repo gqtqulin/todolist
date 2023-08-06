@@ -15,6 +15,14 @@ type Task = {
 function App() {
   const [tasks, setTasks] = useState<Array<Task>>([]);
 
+  const createList = () => {
+    return (<ul>
+      {tasks.map(t => {
+        return <li>id:{t.id}, название:{t.title}, описание:{t.desc}, выполнена:{t.status ? 'да' : 'нет'}</li>
+      })}
+    </ul>)
+  };
+
   const updateTask = () => {};
 
   const changeTaskStatus = () => {};
@@ -23,9 +31,9 @@ function App() {
     <div className="App">
       <h1>TO-DO list</h1>
 
-      <AddTask tasks={tasks} setTasks={setTasks} />
+      <p>{createList()}</p>
 
-      <p>{JSON.stringify(tasks)}</p>
+      <AddTask tasks={tasks} setTasks={setTasks} />
 
       <DeleteTask tasks={tasks} setTasks={setTasks} />
     </div>
