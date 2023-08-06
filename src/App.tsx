@@ -4,28 +4,26 @@ import logo from "./logo.svg";
 import "./App.css";
 import { AddTask } from "./components/AddTask/AddTask";
 import { DeleteTask } from "./components/DeleteTask/DeleteTask";
-
-type Task = {
-  id: number;
-  title: string;
-  desc: string;
-  status: boolean;
-};
+import { UpdateTask } from "./components/UpdateTask/UpdateTask";
+import { TaskStatus } from "./components/TaskStatus/TaskStatus";
 
 function App() {
   const [tasks, setTasks] = useState<Array<Task>>([]);
 
   const createList = () => {
-    return (<ul>
-      {tasks.map(t => {
-        return <li>id:{t.id}, название:{t.title}, описание:{t.desc}, выполнена:{t.status ? 'да' : 'нет'}</li>
-      })}
-    </ul>)
+    return (
+      <ul>
+        {tasks.map((t) => {
+          return (
+            <li>
+              id:{t.id}, название:{t.title}, описание:{t.desc}, выполнена:
+              {t.status ? "да" : "нет"}
+            </li>
+          );
+        })}
+      </ul>
+    );
   };
-
-  const updateTask = () => {};
-
-  const changeTaskStatus = () => {};
 
   return (
     <div className="App">
@@ -36,6 +34,10 @@ function App() {
       <AddTask tasks={tasks} setTasks={setTasks} />
 
       <DeleteTask tasks={tasks} setTasks={setTasks} />
+
+      <UpdateTask tasks={tasks} setTasks={setTasks} />
+
+      <TaskStatus tasks={tasks} setTasks={setTasks}/>
     </div>
   );
 }

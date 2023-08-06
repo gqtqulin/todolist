@@ -1,19 +1,8 @@
-import {useState} from 'react';
-
-type Task = {
-  id: number;
-  title: string;
-  desc: string;
-  status: boolean;
-};
-
-interface Props {
-  tasks: Array<Task>;
-  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
-}
+import { useState } from "react";
 
 export const DeleteTask = ({ tasks, setTasks }: Props) => {
-    const [inputId, setInputId] = useState('');
+  const [inputId, setInputId] = useState("");
+
   const deleteTask = (id: number) => {
     const taskIndexToDelete: number = tasks.findIndex((t) => t.id === id);
     const candidateTask: Task = tasks[taskIndexToDelete];
@@ -23,16 +12,16 @@ export const DeleteTask = ({ tasks, setTasks }: Props) => {
     setTasks(updatedTasks);
   };
 
-  const handleDeleteTaskFormSubmit = (
+  const handlerDeleteTaskFormSubmit = (
     event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
     if (Number(inputId)) {
-        deleteTask(Number(inputId));
+      deleteTask(Number(inputId));
     } else {
-        throw new Error('Переданный id должен быть числом!')
+      throw new Error("Переданный id должен быть числом!");
     }
-    setInputId('');
+    setInputId("");
   };
 
   const handlerChangeIdInput = (event: React.FormEvent<HTMLInputElement>) => {
@@ -41,12 +30,17 @@ export const DeleteTask = ({ tasks, setTasks }: Props) => {
 
   return (
     <div>
-      <form onSubmit={handleDeleteTaskFormSubmit}>
+      <form onSubmit={handlerDeleteTaskFormSubmit}>
         <label>
-          Для удаление заметки укажите ее id
-          <input type="text" placeholder="id" value={inputId} onChange={handlerChangeIdInput} />
+          Для удаление задачи укажите ее id
+          <input
+            type="text"
+            placeholder="id"
+            value={inputId}
+            onChange={handlerChangeIdInput}
+          />
         </label>
-        <input type="submit" value="delete" />
+        <input type="submit" value="Удалить задачу" />
       </form>
     </div>
   );
