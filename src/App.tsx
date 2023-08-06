@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>privet ts react app</h1>
+      <h1>TO-DO list</h1>
 
       <AddTask tasks={tasks} setTasks={setTasks} />
 
