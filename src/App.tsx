@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>TO-DOs</h1>
+      <h1>TODOs</h1>
 
       <AddTask tasks={tasks} setTasks={setTasks} />
 

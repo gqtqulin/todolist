@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./AddTask.module.css";
 
 export const AddTask = ({ tasks, setTasks }: Props) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -17,18 +18,22 @@ export const AddTask = ({ tasks, setTasks }: Props) => {
           status: false,
         },
       ]);
-      setIsButtonDisabled(false);
-    }, 500);
+    setIsButtonDisabled(false);
+    }, 750);
   };
 
-  const handlerSubmitAddTaskForm = (event: React.FormEvent<HTMLFormElement>) => {
+  const handlerSubmitAddTaskForm = (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
     addTask(title, desc);
     setTitle("");
     setDesc("");
   };
 
-  const handlerTitleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const handlerTitleInputChange = (
+    event: React.FormEvent<HTMLInputElement>
+  ) => {
     setTitle(event.currentTarget.value);
   };
 
@@ -37,31 +42,34 @@ export const AddTask = ({ tasks, setTasks }: Props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handlerSubmitAddTaskForm}>
-        <label>
-          Введите имя задачи:
+    <div className={styles.addTaskContainer}>
+      <form className={styles.addTaskForm} onSubmit={handlerSubmitAddTaskForm}>
+        <div className={styles.formTitleInputContainer}>
           <input
             type="text"
+            className={styles.formTitleInput}
             placeholder="имя задачи"
             value={title}
             onChange={handlerTitleInputChange}
           />
-        </label>
-        <label>
-          Введите описание задачи:
+        </div>
+        <div className={styles.formDescInputContainer}>
           <input
             type="text"
-            placeholder="описание задачи"
+            className={styles.formDescInput}
+            placeholder="описание (необязательно)"
             value={desc}
             onChange={handlerDescInputChange}
           />
-        </label>
-        <input
-          type="submit"
-          disabled={isButtonDisabled}
-          value="Добавить задачу"
-        />
+        </div>
+        <div className={styles.buttonContainer}>
+          <input
+            type="submit"
+            className={styles.button}
+            disabled={isButtonDisabled}
+            value="Добавить задачу"
+          />
+        </div>
       </form>
     </div>
   );
