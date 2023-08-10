@@ -1,0 +1,39 @@
+.listItem {
+  @apply list-none;
+}
+
+.taskForm {
+  @apply flex gap-x-8 items-center justify-center content-center;
+}
+
+.formTitleInputContainer {
+    @apply h-12;
+}
+
+.formTitleInput {
+    @apply text-center h-full;
+}
+
+.formDescInputContainer {
+    @apply h-12;
+}
+
+.formDescInput {
+    @apply text-center h-full resize-none;
+}
+
+.formCheckboxContainer {
+
+}
+
+.formCheckbox {
+
+}
+
+.formDeleteButtonContainer {
+
+}
+
+.formDeleteButton {
+
+}

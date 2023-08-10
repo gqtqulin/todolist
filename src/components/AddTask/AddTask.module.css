@@ -25,9 +25,9 @@
 }
 
 .formDescInputContainer {
-  @apply h-20;
+  @apply h-12;
 }
 
 .formDescInput {
-  @apply h-full w-[50%] text-center;
+  @apply h-full w-[40%] text-center;
 }

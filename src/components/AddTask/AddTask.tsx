@@ -18,7 +18,7 @@ export const AddTask = ({ tasks, setTasks }: Props) => {
           status: false,
         },
       ]);
-    setIsButtonDisabled(false);
+      setIsButtonDisabled(false);
     }, 750);
   };
 
@@ -26,19 +26,10 @@ export const AddTask = ({ tasks, setTasks }: Props) => {
     event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-    addTask(title, desc);
+    if (title) addTask(title, desc);
+    else alert("Заполните обязательные поля");
     setTitle("");
     setDesc("");
-  };
-
-  const handlerTitleInputChange = (
-    event: React.FormEvent<HTMLInputElement>
-  ) => {
-    setTitle(event.currentTarget.value);
-  };
-
-  const handlerDescInputChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setDesc(event.currentTarget.value);
   };
 
   return (
@@ -50,17 +41,18 @@ export const AddTask = ({ tasks, setTasks }: Props) => {
             className={styles.formTitleInput}
             placeholder="имя задачи"
             value={title}
-            onChange={handlerTitleInputChange}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className={styles.formDescInputContainer}>
           <input
             type="text"
+            name="taskDesc"
             className={styles.formDescInput}
-            placeholder="описание (необязательно)"
+            placeholder="описание задачи"
             value={desc}
-            onChange={handlerDescInputChange}
-          />
+            onChange={(e) => setDesc(e.target.value)}
+          ></input>
         </div>
         <div className={styles.buttonContainer}>
           <input
