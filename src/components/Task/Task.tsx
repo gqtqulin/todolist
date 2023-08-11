@@ -1,21 +1,26 @@
 import { useState, useEffect } from "react";
 import styles from "./Task.module.css";
 
-export const Task: React.FC<TaskProps> = ({ task }) => {
+export const Task: React.FC<TaskProps> = ({ task, deleteTask, updateTasks }) => {
   const [currentId, setCurrentId] = useState(task.id);
   const [currentTitle, setCurrentTitle] = useState(task.title);
   const [currentDesc, setCurrentDesc] = useState(task.desc);
   const [currentStatus, setCurrentStatus] = useState(task.status);
 
-  console.log(currentTitle);
-
+  //изменение массива сделать здесь
   useEffect(() => {
     console.log("states is changed");
+    updateTasks(currentId, currentTitle, currentDesc, currentStatus);
   }, [currentTitle, currentDesc, currentStatus]);
 
+  const handleDeleteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("task delete", currentId);
+    event.preventDefault();
+    deleteTask(currentId);
+  }
+
   return (
-    <li key={currentId} className={styles.listItem}>
-      <form className={styles.taskForm}>
+    <form className={styles.taskForm}>
       <div className={styles.formCheckboxContainer}>
           <input
             name="checkBox"
@@ -45,9 +50,9 @@ export const Task: React.FC<TaskProps> = ({ task }) => {
           ></input>
         </div>
         <div className={styles.formDeleteButtonContainer}>
-          <button className={styles.formDeleteButton}>Удалить</button>
+          <button className={styles.formDeleteButton}
+          onClick={handleDeleteClick}>Удалить</button>
         </div>
       </form>
-    </li>
   );
 };

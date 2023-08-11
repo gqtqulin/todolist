@@ -7,6 +7,8 @@ declare type Task = {
 
 declare interface TaskProps {
   task: Object<Task>;
+  deleteTask: Function;
+  updateTasks: Function;
 };
 
 declare interface Props {
