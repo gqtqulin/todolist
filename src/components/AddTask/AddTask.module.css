@@ -1,13 +1,6 @@
-.addTaskContainer {
-
-}
 
 .addTaskForm {
-    @apply flex flex-col gap-y-4;
-}
-
-.buttonContainer {
-
+    @apply flex flex-row justify-center align-middle gap-y-8 gap-x-6 ;
 }
 
 .button {

@@ -1,0 +1,8 @@
+
+.appContainer {
+    @apply mt-[2%];
+}
+
+.headerText {
+    @apply flex justify-center align-middle;
+}

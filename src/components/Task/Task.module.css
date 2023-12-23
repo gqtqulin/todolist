@@ -32,6 +32,10 @@
 .formDeleteButtonContainer {
 }
 
+.lineThrough {
+  text-decoration: line-through
+}
+
 .formDeleteButton {
   @apply p-2 bg-indigo-700 text-white 
         hover:font-medium rounded-md disabled:text-zinc-700
